@@ -11,8 +11,23 @@ psycopg2-binary = "*"
 drf-nested-routers = "*"
 django-filter = "*"
 djoser = "*"
+pillow = "*"
+django-cors-headers = "*"
+django-templated-mail = "*"
+redis = "*"
+celery = "*"
+flower = "*"
+django-redis = "*"
+whitenoise = "*"
+gunicorn = "*"
 
 [dev-packages]
+pytest = "*"
+pytest-django = "*"
+pytest-watch = "*"
+model-bakery = "*"
+locust = "*"
+django-silk = "*"
 
 [requires]
 python_version = "3.14"

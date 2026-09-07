@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Milestones — Track progress that matters</title>
+  <link rel="stylesheet" href="{% static 'core/styles.css' %}" />
+</head>
+<body>
+
+  <header class="wrap nav">
+    <img src="{% static 'core/logo.svg' %}" alt="Milestones" />
+  </header>
+
+  <section class="wrap hero">
+    <div>
+      <h1>MILESTONES SHOP</h1>
+    </div>
+
+    <div class="trail-box">
+      <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+        <path d="M40 280 C 100 260, 90 190, 150 170 S 240 100, 220 60 S 340 40, 380 20"
+              fill="none" stroke="#D8CFB8" stroke-width="3" stroke-dasharray="1 10" stroke-linecap="round"/>
+        <circle cx="40" cy="280" r="7" fill="#4A6B57"/>
+        <circle cx="150" cy="170" r="7" fill="#F3EFE4" stroke="#C69B3C" stroke-width="3"/>
+        <circle cx="220" cy="60" r="7" fill="#F3EFE4" stroke="#C69B3C" stroke-width="3"/>
+        <circle cx="380" cy="20" r="9" fill="#16241C"/>
+        <text x="55" y="285" font-family="IBM Plex Sans" font-size="13" fill="#4A6B57">Started</text>
+        <text x="163" y="165" font-family="IBM Plex Sans" font-size="13" fill="#3B463C">First draft shipped</text>
+        <text x="233" y="55" font-family="IBM Plex Sans" font-size="13" fill="#3B463C">100 users</text>
+        <text x="330" y="42" font-family="IBM Plex Sans" font-size="13" fill="#16241C">Launch</text>
+      </svg>
+    </div>
+  </section>
+  
+  <footer class="wrap footer">
+    <span>© 2026 Milestones</span>
+    <span>Privacy · Terms · Contact</span>
+  </footer>
+
+</body>
+</html>

@@ -1,17 +1,24 @@
+from django.core.cache import cache
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.core.exceptions import ObjectDoesNotExist
-from django.contrib.contenttypes.models import ContentType
-from store.models import Product, Order, OrderItem, Customer
-from tags.models import TaggedItem
-from django.db.models import DecimalField, ExpressionWrapper, Value, F, Func
-from django.db.models.functions import Concat
-from django.db.models.aggregates import Count, Max, Min, Avg, Sum
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
+from rest_framework.views import APIView
+import logging
+import requests
+
+logger = logging.getLogger(__name__)
 
 
 # Create your views here.
-def say_hello(request):
-    content_type = ContentType.objects.get_for_model(Product)
 
-    queryset = TaggedItem.objects.select_related("tag").filter(content_type=content_type, object_id=1)
-    return render(request, "hello.html", {"name": "Django-Backend", "tags": list(queryset)})
+class HelloView(APIView):
+    def get(self, request):
+        try:
+            logger.info('Calling httpbin')
+            response = requests.get("http://httpbin.org/delay/2")
+            logger.info('Received the response')
+            data = response.json()
+        except requests.ConnectionError:
+            logger.critical('httpbin is offline')
+        return render(request, "hello.html", {"name": "Misbahu"})
+
