@@ -10,9 +10,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 ALLOWED_HOSTS = ['milestone63-prod-72e404496595.herokuapp.com']
 
 DATABASES = {
-    "default": dj_database_url.config(
-        default=os.environ.get("DATABASE_URL")
-    )
+    "default": dj_database_url.config()
 }
 
 REDIS_URL = os.environ['REDIS_URL']
@@ -30,13 +28,10 @@ CACHES = {
     }
 }
 
-MAILERS = {
-    "default": {
-        "OPTIONS": {
-            "host": os.environ['MAILGUN_SMTP_SERVER'],
-            "port": os.environ['MAILGUN_SMTP_PORT'],
-            "username": os.environ['MAILGUN_SMTP_LOGIN'],
-            "password": os.environ['MAILGUN_API_KEY'],
-        }
-    }
+
+EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
+ANYMAIL = {
+    "MAILGUN_API_KEY": os.environ.get("MAILGUN_API_KEY"),
+    "MAILGUN_SENDER_DOMAIN": os.environ.get("MAILGUN_DOMAIN"),
 }
+DEFAULT_FROM_EMAIL = "musbahughassan164@sandbox59dafe0d4b924a09ad927bf73cb1e251.mailgun.org"
