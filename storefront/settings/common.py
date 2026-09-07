@@ -162,23 +162,8 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=5),
 }
 
-
-MAILERS = {
-    "default": {
-        "BACKEND": "django.core.mail.backends.smtp.EmailBackend",
-        "OPTIONS": {
-            "host": "localhost",
-            "port": 2525,
-            "username": "",
-            "password": "",
-            "default_from_email": "from@milestone63.com",
-        }
-    }
-}
-
 ADMINS = [('Misbahu','admin@milestone63.com')]
 
-CELERY_BROKER_URL = 'redis://localhost:6379/1'
 CELERY_BEAT_SCHEDULE = {
     'notify_customer': {
         'task': 'playground.tasks.notify_customer',
@@ -188,13 +173,6 @@ CELERY_BEAT_SCHEDULE = {
 }
 
 
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",
-        "TIMEOUT":10 * 60,  # 10 minutes
-    }
-}
 
 LOGGING = {
     'version': 1,

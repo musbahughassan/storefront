@@ -14,3 +14,29 @@ DATABASES = {
         default=os.environ.get("DATABASE_URL")
     )
 }
+
+REDIS_URL = os.environ['REDIS_URL']
+
+CELERY_BROKER_URL = REDIS_URL
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": REDIS_URL,
+        "TIMEOUT":10 * 60,  # 10 minutes
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+MAILERS = {
+    "default": {
+        "OPTIONS": {
+            "host": os.environ['MAILGUN_SMTP_SERVER'],
+            "port": os.environ['MAILGUN_SMTP_PORT'],
+            "username": os.environ['MAILGUN_SMTP_LOGIN'],
+            "password": os.environ['MAILGUN_API_KEY'],
+        }
+    }
+}
