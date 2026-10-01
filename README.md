@@ -40,7 +40,7 @@ The project was developed to explore the architecture and engineering practices 
 | Docker Compose        | Multi-container development   |
 | Gunicorn              | WSGI application server       |
 | Pytest                | Automated testing             |
-| Locust                | Load testing                  |
+| Locust                | Performance testing           |
 | Git                   | Version control               |
 | Heroku                | Deployment                    |
 
