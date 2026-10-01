@@ -10,7 +10,10 @@ from store.validators import validate_file_size
 
 class Promotion(models.Model):
     description = models.CharField(max_length=255)
-    discount = models.FloatField()
+    discount = models.DecimalField(
+    max_digits=5,
+    decimal_places=2
+)
 
 
 class Collection(models.Model):
@@ -27,13 +30,13 @@ class Collection(models.Model):
 
 class Product(models.Model):
     title = models.CharField(max_length=255)
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True)
     description = models.TextField(null=True, blank=True)
     unit_price = models.DecimalField(
         max_digits=6, 
         decimal_places=2,
         validators=[MinValueValidator(1)])
-    inventory = models.IntegerField(validators=[MinValueValidator(5)])
+    inventory = models.IntegerField(validators=[MinValueValidator(0)])
     last_update = models.DateTimeField(auto_now=True)
     collection = models.ForeignKey(Collection, on_delete=models.PROTECT, related_name="products")
     promotions = models.ManyToManyField(Promotion, blank=True)
@@ -76,11 +79,11 @@ class Customer(models.Model):
 
     @admin.display(ordering='user__first_name')
     def first_name(self):
-        return self.first_name
+        return self.user.first_name
 
     @admin.display(ordering='user__last_name')
     def last_name(self):
-            return self.last_name
+            return self.user.last_name
     
     class Meta:
         ordering = ["user__first_name", "user__last_name"]
