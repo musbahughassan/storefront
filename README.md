@@ -279,7 +279,7 @@ python manage.py test
 
 Locust is included for load testing.
 
-Load-testing scenarios are located in:
+Performance-testing scenarios are located in:
 
 ```text
 locustfiles/
@@ -316,7 +316,7 @@ This project provided practical experience with:
 * Celery
 * Containerization
 * Automated testing
-* Load testing
+* Performance testing
 * Environment-based configuration
 * Application deployment
 * Version control
@@ -339,7 +339,7 @@ Potential future improvements include:
 
 ## Author
 
-**Musbahu Hassan**
+**Musbahu G. Hassan**
 
 Backend Software Engineer focused on Python, Django, REST APIs, databases, and distributed backend systems.
 
